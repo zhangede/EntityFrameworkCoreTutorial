@@ -11,9 +11,9 @@ namespace ConsoleApp1
         public int AusschreibungBewerberId { get; set; }
 
         public int BewerberId { get; set; }
-        public Bewerber Bewerber { get; set; }
+        public virtual Bewerber Bewerber { get; set; }
 
         public int AusschreibungId { get; set; }
-        public Ausschreibung Ausschreibung { get; set; }
+        public virtual Ausschreibung Ausschreibung { get; set; }
     }
 }

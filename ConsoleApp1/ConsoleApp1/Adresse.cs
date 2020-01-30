@@ -15,6 +15,6 @@ namespace ConsoleApp1
 
 
         public int BewerberId { get; set; }
-        public Bewerber Bewerber { get; set; }
+        public virtual Bewerber Bewerber { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace ConsoleApp1
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.EnableSensitiveDataLogging()
+                .UseLazyLoadingProxies()
                 .UseLoggerFactory(loggerFactory)
                 .UseSqlServer(@"Server=.\SQLExpress;Database=BewerberDb;Trusted_Connection=true;");
         }
