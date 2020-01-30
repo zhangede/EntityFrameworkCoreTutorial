@@ -19,12 +19,12 @@ namespace ConsoleApp1
             {
                 //var bewMustermann = ctx.BewerberSet.Include(x => x.AusschreibungenBewerber).ThenInclude(x => x.Ausschreibung).FirstOrDefault(x => x.Nachname == "Mustermann");
                 var bewMustermann = ctx.BewerberSet.FirstOrDefault(x => x.Nachname == "Mustermann");
-                
+
                 foreach (var item in bewMustermann.AusschreibungenBewerber)
                 {
                     Console.WriteLine($"{bewMustermann.Nachname} - {item.Ausschreibung.Bezeichnung}");
                 }
-                                
+
                 //var bewMusterfrau = ctx.BewerberSet.Include(x => x.AusschreibungenBewerber).ThenInclude(x => x.Ausschreibung).FirstOrDefault(x => x.Nachname == "Musterfrau");
                 var bewMusterfrau = ctx.BewerberSet.FirstOrDefault(x => x.Nachname == "Musterfrau");
 
@@ -32,6 +32,14 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine($"{bewMusterfrau.Nachname} - {item.Ausschreibung.Bezeichnung}");
                 }
+
+                var bewMusterjunge = ctx.BewerberJungSet.FirstOrDefault(x => x.Nachname == "Musterjunge");
+
+                Console.WriteLine($"{bewMusterjunge.Nachname} - {bewMusterjunge.UnterschriftErziehungsberechtigteVorhanden}");
+
+                var bewMusterj = ctx.BewerberSet.FirstOrDefault(x => x.Nachname == "Musterjunge");
+
+                Console.WriteLine($"{bewMusterj.Nachname}");
             }
 
             Console.ReadLine();
@@ -106,6 +114,16 @@ namespace ConsoleApp1
                     }
                 };
 
+                ctx.SaveChanges();
+
+
+                var bewerberJung = new BewerberJung
+                {
+                    Nachname = "Musterjunge",
+                    UnterschriftErziehungsberechtigteVorhanden = true
+                };
+
+                ctx.Add(bewerberJung);
                 ctx.SaveChanges();
             }
         }

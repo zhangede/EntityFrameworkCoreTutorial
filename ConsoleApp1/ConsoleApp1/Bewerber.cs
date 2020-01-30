@@ -11,7 +11,6 @@ namespace ConsoleApp1
         public int BewerberId { get; set; }
         public string Vorname { get; set; }
         public string Nachname { get; set; }
-        public string FullName { get; set; }
 
         public virtual List<AusschreibungBewerber> AusschreibungenBewerber { get; set; }
     }
