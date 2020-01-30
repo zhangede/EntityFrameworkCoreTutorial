@@ -8,7 +8,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            AddData();
+            //AddData();
 
             ReadData();
         }
@@ -17,14 +17,16 @@ namespace ConsoleApp1
         {
             using (var ctx = new BewerberDbContext())
             {
-                var bewMustermann = ctx.BewerberSet.Include(x => x.AusschreibungenBewerber).ThenInclude(x => x.Ausschreibung).FirstOrDefault(x => x.Nachname == "Mustermann");
-
+                //var bewMustermann = ctx.BewerberSet.Include(x => x.AusschreibungenBewerber).ThenInclude(x => x.Ausschreibung).FirstOrDefault(x => x.Nachname == "Mustermann");
+                var bewMustermann = ctx.BewerberSet.FirstOrDefault(x => x.Nachname == "Mustermann");
+                
                 foreach (var item in bewMustermann.AusschreibungenBewerber)
                 {
                     Console.WriteLine($"{bewMustermann.Nachname} - {item.Ausschreibung.Bezeichnung}");
                 }
-
-                var bewMusterfrau = ctx.BewerberSet.Include(x => x.AusschreibungenBewerber).ThenInclude(x => x.Ausschreibung).FirstOrDefault(x => x.Nachname == "Musterfrau");
+                                
+                //var bewMusterfrau = ctx.BewerberSet.Include(x => x.AusschreibungenBewerber).ThenInclude(x => x.Ausschreibung).FirstOrDefault(x => x.Nachname == "Musterfrau");
+                var bewMusterfrau = ctx.BewerberSet.FirstOrDefault(x => x.Nachname == "Musterfrau");
 
                 foreach (var item in bewMusterfrau.AusschreibungenBewerber)
                 {
