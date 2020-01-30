@@ -25,7 +25,7 @@ namespace ConsoleApp1
             
             modelBuilder.Entity<Bewerber>().Property<Guid>("LastGuid").HasDefaultValue(Guid.NewGuid()).ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Bewerber>().Property(x => x.FullName).HasComputedColumnSql("[Vorname] + ', ' + [Nachname]").ValueGeneratedOnAdd();
+            modelBuilder.Entity<Bewerber>().Property(x => x.FullName).HasComputedColumnSql("[Vorname] + ', ' + [Nachname]");
         }
     }
 }
