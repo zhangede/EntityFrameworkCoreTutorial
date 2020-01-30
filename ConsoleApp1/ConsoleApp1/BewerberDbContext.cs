@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,13 +8,22 @@ namespace ConsoleApp1
 {
     public class BewerberDbContext : DbContext
     {
+        public static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(builder => { builder.AddDebug(); });
+
+
         public DbSet<Bewerber> BewerberSet { get; set; }
         public DbSet<Ausschreibung> AusschreibungSet { get; set; }
         public DbSet<Adresse> AdresseSet { get; set; }
 
         public DbSet<AusschreibungBewerber> AusschreibungBewerberSet { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer(@"Server=.\SQLExpress;Database=BewerberDb;Trusted_Connection=true;");
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.EnableSensitiveDataLogging()
+                .UseLoggerFactory(loggerFactory)
+                .UseSqlServer(@"Server=.\SQLExpress;Database=BewerberDb;Trusted_Connection=true;");
+        }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
