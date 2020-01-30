@@ -8,7 +8,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            //AddData();
+            AddData();
 
             ReadData();
         }
@@ -36,6 +36,7 @@ namespace ConsoleApp1
                 var bewMusterjunge = ctx.BewerberJungSet.FirstOrDefault(x => x.Nachname == "Musterjunge");
 
                 Console.WriteLine($"{bewMusterjunge.Nachname} - {bewMusterjunge.UnterschriftErziehungsberechtigteVorhanden}");
+                Console.WriteLine($"{bewMusterjunge.Adressen.FirstOrDefault().AuslandAdresse.Adresse1} - {bewMusterjunge.UnterschriftErziehungsberechtigteVorhanden}");
 
                 var bewMusterj = ctx.BewerberSet.FirstOrDefault(x => x.Nachname == "Musterjunge");
 
@@ -123,7 +124,43 @@ namespace ConsoleApp1
                     UnterschriftErziehungsberechtigteVorhanden = true
                 };
 
+                Adresse adresse = new Adresse
+                {
+                    AuslandAdresse = new AuslandAdresse
+                    {
+                        Adresse1 = "A",
+                        Adresse2 = "B",
+                        Adresse3 = "C"
+                    },
+                    Bewerber = bewerberJung
+                };
+
+                Adresse adresse2 = new Adresse
+                {
+                    AuslandAdresse = new AuslandAdresse
+                    {
+                        Adresse1 = "A",
+                        Adresse2 = "B",
+                        Adresse3 = "C"
+                    },
+                    Bewerber = bewMustermann
+                };
+
+
+                Adresse adresse3 = new Adresse
+                {
+                    Strasse = "Lankwitzer Str. 4",
+                    Ort = "Berlin",
+            
+                    Bewerber = bewMusterfrau
+                };
+
+
+                ctx.Add(adresse);
+                ctx.Add(adresse2);
+                ctx.Add(adresse3);
                 ctx.Add(bewerberJung);
+
                 ctx.SaveChanges();
             }
         }

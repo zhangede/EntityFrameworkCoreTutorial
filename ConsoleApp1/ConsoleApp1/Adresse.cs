@@ -11,10 +11,11 @@ namespace ConsoleApp1
         public int AdresseId { get; set; }
         public string Ort { get; set; }
         public string Strasse { get; set; }
-
-
-
+               
         public int BewerberId { get; set; }
         public virtual Bewerber Bewerber { get; set; }
+
+        public virtual AuslandAdresse AuslandAdresse { get; set; }
+
     }
 }
