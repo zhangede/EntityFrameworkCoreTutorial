@@ -13,6 +13,6 @@ namespace ConsoleApp1
         public string Nachname { get; set; }
         public string FullName { get; set; }
 
-        public List<AusschreibungBewerber> AusschreibungenBewerber { get; set; }
+        public virtual List<AusschreibungBewerber> AusschreibungenBewerber { get; set; }
     }
 }

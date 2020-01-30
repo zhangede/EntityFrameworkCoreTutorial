@@ -12,6 +12,6 @@ namespace ConsoleApp1
         public string Bezeichnung { get; set; }
         public DateTime Einstellungsdatum { get; set; }
 
-        public List<AusschreibungBewerber> AusschreibungenBewerber { get; set; }
+        public virtual List<AusschreibungBewerber> AusschreibungenBewerber { get; set; }
     }
 }
