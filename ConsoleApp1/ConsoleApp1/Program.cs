@@ -152,13 +152,12 @@ namespace ConsoleApp1
                     Strasse = "Lankwitzer Str. 4",
                     Ort = "Berlin",
             
-                    Bewerber = bewMusterfrau
                 };
 
-
+                bewMusterfrau.Adressen.Add(adresse3);
+                
                 ctx.Add(adresse);
                 ctx.Add(adresse2);
-                ctx.Add(adresse3);
                 ctx.Add(bewerberJung);
 
                 ctx.SaveChanges();
